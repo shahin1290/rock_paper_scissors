@@ -1,41 +1,16 @@
 class RockPaperScissors
-    attr_reader :result, :choice
-  
-    def initialize(choice)
-  
-      @choice = choice
-  
-      if is_valid_choice?
-        @result = play
-      else
-        @result = instructions
+      def initialize(guess)
+        @plaer_1_guess = guess
       end
-  
-    end
-  
-  private
-  
-    def is_valid_choice?
-  
-        if @choice.is_a?(Integer) && (@choice > 0 && @choice < 4)
-            @choice = number_to_choice(@choice)
-            return true
-        elsif @choice.is_a?(String) && ['rock', 'paper', 'scissors'].include?(@choice.downcase)
-            @choice = @choice.downcase
-            return true
-        else
-            return false
-        end
-    end
-  
+    
     def play
       @computer_choice = random_choice
   
-      if @choice == @computer_choice
+      if @plaer_1_guess == @computer_choice
         return "tie!"
-      elsif (@choice == "rock" && @computer_choice == "scissors") ||
-            (@choice == "paper" && @computer_choice == "rock") ||
-            (@choice == "scissors" && @computer_choice == "paper")
+      elsif (@plaer_1_guess == "rock" && @computer_choice == "scissors") ||
+            (@plaer_1_guess == "paper" && @computer_choice == "rock") ||
+            (@plaer_1_guess == "scissors" && @computer_choice == "paper")
         return "won!"
       else
         return "lost!"
@@ -45,10 +20,8 @@ class RockPaperScissors
     def random_choice
       number_to_choice(Random.new.rand(1...4))
     end
-  
-    def instructions
-      "please use one of the valid answers below"
-    end
+
+    private
   
     def number_to_choice(number)
       case number
