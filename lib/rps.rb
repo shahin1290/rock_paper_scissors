@@ -1,12 +1,12 @@
 class RockPaperScissors
+  attr_accessor :player_score
+
+
       def initialize(guess)
         @plaer_1_guess = guess
+        @player_score = @computer_score = @ties = 0
       end
 
-      def score
-
-      end
-    
     def play
       @computer_choice = random_choice
   
@@ -15,6 +15,7 @@ class RockPaperScissors
       elsif (@plaer_1_guess == "rock" && @computer_choice == "scissors") ||
             (@plaer_1_guess == "paper" && @computer_choice == "rock") ||
             (@plaer_1_guess == "scissors" && @computer_choice == "paper")
+            @player_score += 1
         return "won!"
       else
         return "lost!"

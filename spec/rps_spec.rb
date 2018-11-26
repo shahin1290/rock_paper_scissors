@@ -25,6 +25,14 @@ describe "Rock Paper Scissors" do
       game = RockPaperScissors.new('scissors')
       expect(game.play).to eq "won!"
     end
+
+    it "declare final result when anyone score 10" do
+      allow_any_instance_of(RockPaperScissors).to receive(:random_choice).and_return('paper')
+      game = RockPaperScissors.new('scissors')
+      game.play
+      game.play
+      expect(game.player_score).to eq 2
+    end
   
 end
   
