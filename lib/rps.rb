@@ -2,6 +2,10 @@ class RockPaperScissors
       def initialize(guess)
         @plaer_1_guess = guess
       end
+
+      def score
+
+      end
     
     def play
       @computer_choice = random_choice
@@ -26,11 +30,11 @@ class RockPaperScissors
     def number_to_choice(number)
       case number
       when 1
-        number = "rock"
+        choice = "rock"
       when 2
-        number = "paper"
+        choice = "paper"
       when 3
-        number = "scissors"
+        choice = "scissors"
       end
       return number
     end
